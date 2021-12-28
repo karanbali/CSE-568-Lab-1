@@ -1,0 +1,16 @@
+<launch>
+	<node name="stage" pkg="stage_ros" type="stageros"
+	      args="$(find lab1)/world/new_world.world" />
+    <group>
+    <node name="evader" pkg="lab1" type="evader.py"> 
+        <param name="odom_frame" value="robot_0/odom"/>
+        <param name="base_link" value="robot_0/base_link"/>   
+    </node>
+
+    <node name="pursuer" pkg="lab1" type="pursuer.py">
+        <param name="odom_frame" value="robot_1/odom"/>
+        <param name="base_link" value="robot_1/base_link"/>   
+    </node>
+    </group>
+    
+</launch>
